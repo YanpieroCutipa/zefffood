@@ -8,5 +8,7 @@ public class ApplicationDbContext : IdentityDbContext
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)
     {
+        
     }
+    public DbSet<zefffood.Models.Contacto> DataContacto {get; set; }
 }

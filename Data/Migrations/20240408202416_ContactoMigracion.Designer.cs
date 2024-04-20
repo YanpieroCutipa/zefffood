@@ -12,8 +12,8 @@ using zefffood.Data;
 namespace zefffood.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240420074738_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20240408202416_ContactoMigracion")]
+    partial class ContactoMigracion
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

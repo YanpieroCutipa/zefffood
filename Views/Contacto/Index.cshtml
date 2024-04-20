@@ -1,0 +1,50 @@
+@model zefffood.Models.Contacto
+@{
+   
+    ViewData["Title"] = "Contáctanos a nosotros "; 
+    <style>
+        body {
+            background-color: #E8563F;
+        }
+    </style> 
+}
+
+@using (Html.BeginForm("EnviarMensaje", "Contacto", FormMethod.Post))
+{
+   <section>
+<fieldset> 
+<div>
+   
+
+    <h1 class="display-6 fw-bold text-center"></h1>
+    <div class="col-lg-6 mx-auto">
+        
+
+    <form asp-controller="Contacto"  id="formulario"> 
+        <h3 class="text-center"; >@ViewData["Title"] <p>&#128222;</p> </h3> 
+
+        <label asp-for="Name" class="form-label">Nombre:</label>
+        <input asp-for="Name" class="form-control form-control-sm" type="text" placeholder="Ingrese su nombre" aria-label=".form-control-sm" required/>
+
+        <label asp-for="Email" class="control-label">Correo Electrónico:</label>
+        <input asp-for="Email" class="form-control" placeholder="Ingrese su email" required/>
+
+
+        <label asp-for="Message" class="control-label">mensaje:</label>
+        <input asp-for="Message" class="form-control" placeholder="Ingrese el asunto del mensaje" required/>
+
+        <label asp-for="Category" class="control-label">Categoria:</label>
+        <textarea asp-for="Category" class="form-control" placeholder="Ingrese " required></textarea>
+        <br>
+        <center><div class="form-group">
+            <button type="submit" class="btn btn-light" style="background-color:#180604; color:white;" onclick="mensajeconsulta();"
+>Enviar</button> 
+        </div>               
+    </form>
+    <h1>@ViewData["Message"]</h1>
+     
+</div>
+</fieldset>
+</section>
+}
+
