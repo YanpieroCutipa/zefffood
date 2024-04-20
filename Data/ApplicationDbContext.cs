@@ -11,4 +11,5 @@ public class ApplicationDbContext : IdentityDbContext
         
     }
     public DbSet<zefffood.Models.Contacto> DataContacto {get; set; }
+    public DbSet<zefffood.Models.Producto> DataProducto {get; set; }
 }
