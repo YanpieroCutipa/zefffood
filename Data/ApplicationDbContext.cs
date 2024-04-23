@@ -9,6 +9,6 @@ public class ApplicationDbContext : IdentityDbContext
         : base(options){     
         }
     public DbSet<zefffood.Models.Contacto> DataContacto {get; set; }
-    
     public DbSet<zefffood.Models.Producto> DataProducto {get; set; }
+    public DbSet<zefffood.Models.Proforma> DataItemCarrito {get; set; }
 }
