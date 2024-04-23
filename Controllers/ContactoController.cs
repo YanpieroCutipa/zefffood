@@ -37,6 +37,8 @@ namespace zefffood.Controllers
             _context.Add(objcontato);
             _context.SaveChanges();
 
+            ModelState.Clear();
+
             ViewData["Message"] = "Se registro el contacto";
             return View("Index");
         }

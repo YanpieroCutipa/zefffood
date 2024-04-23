@@ -33,11 +33,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Catalogo" asp-action="Index">Catalogo</a>
                         </li>
-                        <li class="nav-item">
-                            <form asp-controller="Catalogo" asp-action="Index">
-                                <input type="text" name="searchString"><input type="submit" value="Buscar" />
-                            </form>
-                        </li>
+                        
                     </ul>
                     <partial name="_LoginPartial" />    
                 </div>
@@ -57,11 +53,48 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - zefffood - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="border-top footer text-white" style="background-color: #E8563F;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <p>&copy; 2024 - Zeff_Food - <a asp-area="" asp-controller="Home" asp-action="Privacy" class="text-white">Privacidad</a></p>
+            </div>
+            <div class="col-md-6 text-end">
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a href="https://github.com/YanpieroCutipa/zefffood" class="text-white"><i class="fab fa-facebook"></i></a></li>
+                    <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-twitter"></i></a></li>
+                    <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-instagram"></i></a></li>
+                </ul>
+            </div>
         </div>
-    </footer>
+    </div>
+</footer>
+<style>
+    .footer {
+    background-color: #E8563F;
+    padding: 20px 0; /* Ajusta el espaciado interno del footer según sea necesario */
+}
+
+.footer p {
+    margin-bottom: 0; /* Elimina el margen inferior del párrafo dentro del footer */
+    font-size: 18px; /* Tamaño de fuente más grande */
+}
+
+.footer a {
+    color: #fff; /* Color del texto de los enlaces */
+    font-size: 20px; /* Tamaño de fuente más grande */
+}
+
+.footer a:hover {
+    text-decoration: none; /* Elimina el subrayado al pasar el ratón sobre los enlaces */
+}
+
+.list-inline-item {
+    margin-right: 10px; /* Ajusta el espaciado entre los elementos de la lista en línea */
+    font-size: 24px; /* Tamaño de fuente más grande */
+}
+
+</style>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
