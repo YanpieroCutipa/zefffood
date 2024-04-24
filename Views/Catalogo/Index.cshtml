@@ -1,9 +1,44 @@
 @model IEnumerable<zefffood.Models.Producto>
 @{
-    ViewData["Title"] = "Catalogo";
+    ViewData["Title"] = "CATALOGO";
+    ViewData["Content"] = "HAMBURGUESAS - HOT DOG - SANDWICH";
+    ViewData["Content2"] = "SALCHIPAPAS - PIZZAS - TACOS";
+    ViewData["Content3"] = "BEBIDAS";
 }
 
-<h1>@ViewData["Title"]</h1>
+<h1 class="titulo"><center>@ViewData["Title"]</center></h1>
+<style>
+       
+        .titulo {
+            font-size: 50px;
+            font-family: Arial, sans-serif;
+            font-weight: bold; 
+        }
+
+        h1 {
+            font-size: 20px;
+            font-family: Arial, sans-serif;
+            color: #E8563F;
+        }
+
+        h5 {
+            font-size: 30px;
+            font-family: Arial, sans-serif;
+            color: #050505;
+            font-weight: bold; 
+        }
+
+        p {
+            font-size: 20px;
+            font-family: Arial, sans-serif;
+            color: #050505;
+        }
+
+    
+    </style>
+    <h1><center>@ViewData["Content"]</h1></center>
+    <h1><center>@ViewData["Content2"]</h1></center>
+    <h1><center>@ViewData["Content3"]</h1></center>
 <div class="container">
     <div class="row mb-3">
         <div class="col">
@@ -17,7 +52,7 @@
             </ul>
         </div>
     </div>
-    <h1>@ViewData["Message"]</h1>
+    <h2>@ViewData["Message"]</h2>
     <div class="row">
         <div class="col">
             <div id="products" class="mb-3">
@@ -32,10 +67,10 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
+                                    <center><h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
                                     <p class="card-text">@Html.DisplayFor(modelItem => item.Price)</p>
-                                    <a class="btn btn-primary" asp-action="Add" asp-route-id="@item.Id">Add</a>
-                                    <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">View</a>
+                                    <a class="btn btn-primary" asp-action="Add" asp-route-id="@item.Id">Añadir Carrito</a>
+                                    <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Ver Mas</a>
                                 </div>
                             </div>
                         </div>
