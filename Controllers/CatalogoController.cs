@@ -51,6 +51,7 @@ namespace zefffood.Controllers
                 return  View("Index",productos);
             }else{
                 var producto = await _context.DataProducto.FindAsync(id);
+                Util.SessionExtension.Set<Producto>(HttpContext.Session,"Mi Ultimo Producto", producto);
                 Proforma proforma = new Proforma();
                 proforma.Producto = producto;
                 proforma.Precio = producto.Price;
