@@ -27,20 +27,22 @@
         }
     </style>
     <center><div class="container">
-            <div class="col-sm-4">
-              <div class="card mb-3">
-                <div class="card-body">
-                  <div class="card-img-actions">
-                    <center><img class="img-responsive" width="400" height="500"
-                       src="@Html.DisplayFor(model => model.ImageURL)"  /></center>
-                  </div>
-                </div>
-                <div class="card-body">
-                  <center><h5 class="card-title">@Html.DisplayFor(model => model.Name)</h5>
-                  <p class="card-title">@Html.DisplayFor(model => model.Price)</p>
-                  <a class="btn btn-primary" asp-action="Add" asp-route-id="@Model.Id">Añadir Carrito</a></center>
-                </div>
-              </div>
-            </div>
+  <div class="col-sm-4">
+    <div class="card mb-3">
+      <div class="card-body">
+        <div class="card-img-actions">
+          <center><img class="img-responsive" width="400" height="500"
+                       src="@Html.DisplayFor(model => model.ImageURL)" /></center>
+        </div>
+      </div>
+      <div class="card-body">
+        <center>
+          <h5 class="card-title">@Html.DisplayFor(model => model.Name)</h5>
+          <p>@Html.DisplayFor(model => model.Description)</p>
+          <a class="btn btn-primary" asp-action="Add" asp-route-id="@Model.Id">Añadir Carrito</a>
+        </center>
+      </div>
     </div>
-    </center>
+  </div>
+</div>
+</center>

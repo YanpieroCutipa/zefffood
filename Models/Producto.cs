@@ -18,6 +18,8 @@ namespace zefffood.Models
         public string? Status {get; set; }
         [NotNull]
         public string? ImageURL {get; set; }
+        [NotNull]
+        public String? Description {get; set; }
 
 
     }
