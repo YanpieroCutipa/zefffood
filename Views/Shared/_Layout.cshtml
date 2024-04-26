@@ -60,22 +60,35 @@
     </div>
 
     <footer class="border-top footer text-white" style="background-color: #E8563F;">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-6">
-                <p>&copy; 2024 - Zeff_Food - <a asp-area="" asp-controller="Home" asp-action="Privacy" class="text-white">Privacidad</a></p>
-            </div>
-            <div class="col-md-6 text-end">
-                <ul class="list-inline">
-                    <li class="list-inline-item"><a href="https://github.com/YanpieroCutipa/zefffood" class="text-white"><i class="fab fa-facebook"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-twitter"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-instagram"></i></a></li>
-                </ul>
-            </div>
-        </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <p>&copy; 2024 - Zeff_Food - <a asp-area="" asp-controller="Home" asp-action="Privacy" class="text-white">Privacidad</a></p>
+      </div>
+      <div class="col-md-6 text-end">
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="https://github.com/YanpieroCutipa/zefffood" class="text-white"><i class="fab fa-facebook"></i></a></li>
+          <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-twitter"></i></a></li>
+          <li class.list-inline-item"><a href="#" class="text-white"><i class="fab fa-instagram"></i></a></li>
+        </ul>
+      </div>
     </div>
+  </div>
 </footer>
+
 <style>
+  html, body {
+    height: 100%; /* Ensures the entire viewport is used */
+    margin: 0; /* Remove default margins */
+  }
+
+  .footer {
+    display: flex; /* Enable flexbox layout for footer */
+    justify-content: space-between; /* Distribute content horizontally */
+    align-items: flex-end; /* Align content vertically at the bottom */
+  }
+
+
     .footer {
     background-color: #E8563F;
     padding: 20px 0; /* Ajusta el espaciado interno del footer según sea necesario */
