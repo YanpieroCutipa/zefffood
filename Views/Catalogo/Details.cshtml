@@ -3,46 +3,84 @@
 @{
     ViewData["Title"] = "DETALLES DEL PRODUCTO";
 }
-    <h1 class="titulo"><center>@ViewData["Title"]</center></h1>
-    <style>
 
-        h1 {
-            font-size: 50px;
-            font-family: Arial, sans-serif;
-            color: #E8563F;
-            font-weight: bold;
-        }
+<br /><br />
 
-        h5 {
-            font-size: 30px;
-            font-family: Arial, sans-serif;
-            color: #050505;
-            font-weight: bold; 
-        }
+<h1 class="titulo"><center>@ViewData["Title"]</center></h1>
 
-        p {
-            font-size: 20px;
-            font-family: Arial, sans-serif;
-            color: #050505;
-        }
-    </style>
-    <center><div class="container">
-  <div class="col-sm-4">
-    <div class="card mb-3">
-      <div class="card-body">
-        <div class="card-img-actions">
-          <center><img class="img-responsive" width="400" height="500"
-                       src="@Html.DisplayFor(model => model.ImageURL)" /></center>
+<style>
+    .titulo {
+        font-size: 50px;
+        font-family: Arial, sans-serif;
+        color: #E8563F;
+        font-weight: bold;
+    }
+
+    .card {
+        border: 1px solid #dee2e6;
+        border-radius: 15px;
+        margin-bottom: 20px;
+    }
+
+    .card-img-actions {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .card-img-actions img {
+        width: 400px;
+        height: 500px;
+        border-radius: 15px;
+    }
+
+    .card-description {
+        position: absolute;
+        top: 50%;
+        right: -75%;
+        transform: translate(50%, -50%);
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 100px;
+        border-radius: 15px;
+    }
+
+    .card-title {
+        font-size: 24px;
+        color: #333;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    .card-text {
+        font-size: 22px; /* Cambia el tamaño de la fuente de la descripción */
+        color: #555;
+        margin-bottom: 20px;
+    }
+
+    .btn-primary {
+        font-size: 18px;
+    }
+
+</style>
+
+<center>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-img-actions">
+                            <img class="img-responsive" src="@Html.DisplayFor(model => model.ImageURL)" />
+                            <div class="card-description">
+                                <h5 class="card-title">@Html.DisplayFor(model => model.Name)</h5>
+                                <p class="card-text">@Html.DisplayFor(model => model.Description)</p>
+                                <a class="btn btn-primary" asp-action="Add" asp-route-id="@Model.Id">Añadir al Carrito</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="card-body">
-        <center>
-          <h5 class="card-title">@Html.DisplayFor(model => model.Name)</h5>
-          <p>@Html.DisplayFor(model => model.Description)</p>
-          <a class="btn btn-primary" asp-action="Add" asp-route-id="@Model.Id">Añadir Carrito</a>
-        </center>
-      </div>
     </div>
-  </div>
-</div>
 </center>
