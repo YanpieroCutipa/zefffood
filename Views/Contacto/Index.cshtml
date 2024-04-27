@@ -6,41 +6,44 @@
 @using (Html.BeginForm("EnviarMensaje", "Contacto", FormMethod.Post))
 {
     <section>
-        <fieldset> 
+        <fieldset>
             <div class="container">
-                <h1 class="display-6 fw-bold text-center">@ViewData["Title"] <span>&#128222;</span></h1>
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
+                        <h1 class="display-6 fw-bold text-center">@ViewData["Title"] <span>&#128222;</span></h1>
                         <form asp-controller="Contacto" id="formulario"> 
                             <div class="mb-3">
                                 <label asp-for="Name" class="form-label">Nombre:</label>
-                                <input asp-for="Name" class="form-control form-control-lg" type="text" placeholder="Ingrese su nombre" aria-label="Nombre" required/>
+                                <input asp-for="Name" class="form-control" type="text" placeholder="Ingrese su nombre" aria-label="Nombre" required/>
                             </div>
 
                             <div class="mb-3">
                                 <label asp-for="Email" class="form-label">Correo Electrónico:</label>
-                                <input asp-for="Email" class="form-control form-control-lg" placeholder="Ingrese su email" aria-label="Correo Electrónico" required/>
+                                <input asp-for="Email" class="form-control" placeholder="Ingrese su email" aria-label="Correo Electrónico" required/>
                             </div>
 
                             <div class="mb-3">
                                 <label asp-for="Category" class="form-label">Categoría:</label>
-                                <select asp-for="Category" class="form-select form-select-lg" aria-label="Categoría" required>
+                                <select asp-for="Category" class="form-select" aria-label="Categoría" required>
                                     <option value="">Seleccione una categoría</option>
                                     <option value="Consulta">Consulta</option>
                                     <option value="Comentario">Comentario</option>
                                     <option value="Sugerencia">Sugerencia</option>
                                 </select>
                             </div>
+
                             <div class="mb-3">
                                 <label asp-for="Message" class="form-label">Mensaje:</label>
-                                <textarea asp-for="Message" class="form-control form-control-lg" rows="4" placeholder="Ingrese su mensaje" aria-label="Mensaje" required></textarea>
+                                <textarea asp-for="Message" class="form-control" rows="4" placeholder="Ingrese su mensaje" aria-label="Mensaje" required></textarea>
                             </div>
 
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary btn-lg" onclick="mensajeconsulta();">Enviar</button> 
-                            </div>               
+                                <button type="submit" class="btn btn-primary btn-lg">Enviar</button> 
+                            </div>
                         </form>
-                        <h2 class="text-center">@ViewData["Message"]</h2>
+                        <div class="text-center mt-3">
+                            <h2>@ViewData["Message"]</h2>
+                        </div>
                     </div>
                 </div>
             </div>
