@@ -38,11 +38,12 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Catalogo" asp-action="Index">Catalogo</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Carrito" asp-action="Index">Carrito</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Producto" asp-action="Index">Producto</a>
                         </li>
+
+                    </li>
+                        <partial name="_MenuAdminPartial" />
+                    </ul>
                     </ul>
                     <partial name="_LoginPartial" />    
                 </div>
