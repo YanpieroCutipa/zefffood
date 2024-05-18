@@ -4,7 +4,7 @@ using zefffood.Data;
 //DRIVER de conexion 
 using Npgsql.EntityFrameworkCore.PostgreSQL;
 using Microsoft.OpenApi.Models;
-//using zefffood.Service;
+using zefffood.Service;
 //using zefffood.Integration.jsonplaceholder;
 //using zefffood.Integration.currencyexchange;
 
@@ -21,6 +21,14 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
+
+//Registro mi logica customizada y reuzable
+builder.Services.AddScoped<ProductoService, ProductoService>();
+
+//builder.Services.AddScoped<JsonplaceholderApiIntegration, JsonplaceholderApiIntegration>();
+
+//builder.Services.AddScoped<CurrencyExchangeApiIntegration, CurrencyExchangeApiIntegration>();
+
 
 builder.Services.AddSession(options =>
 {
