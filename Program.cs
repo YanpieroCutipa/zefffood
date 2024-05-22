@@ -5,6 +5,7 @@ using zefffood.Data;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
 using Microsoft.OpenApi.Models;
 using zefffood.Service;
+using zefffood.Integration.jsonplaceholder;
 //using zefffood.Integration.jsonplaceholder;
 //using zefffood.Integration.currencyexchange;
 
@@ -25,7 +26,7 @@ builder.Services.AddControllersWithViews();
 //Registro mi logica customizada y reuzable
 builder.Services.AddScoped<ProductoService, ProductoService>();
 
-//builder.Services.AddScoped<JsonplaceholderApiIntegration, JsonplaceholderApiIntegration>();
+builder.Services.AddScoped<JsonplaceholderAPIIntegration, JsonplaceholderAPIIntegration>();
 
 //builder.Services.AddScoped<CurrencyExchangeApiIntegration, CurrencyExchangeApiIntegration>();
 
