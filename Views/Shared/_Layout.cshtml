@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - Zeff_Food</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     
     <link rel="icon" type="image/png" href="~/images/Logo_simple.png" asp-append-version="true">
 
@@ -52,9 +53,9 @@
 
     <div class="icons">
         <i class="fas fa-bars" id="menu-bars"></i>
-        <i class="fas fa-search" id="search-icon"></i>
-        <a href="#" class="fas fa-heart"></a>
-        <a href="#" class="fas fa-shopping-cart"></a>
+        <!-- <i class="fas fa-search" id="search-icon"></i>-->
+        <!-- <a href="#" class="fas fa-heart"></a>-->
+        <!-- <a href="#" class="fas fa-shopping-cart"></a>-->
     </div>
     </header>
     <div class="container">
@@ -63,25 +64,8 @@
         </main>
     </div>
 
-     <footer class="footer text-white">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <p>&copy; 2024 - Zeff_Food - <a href="/Home/Privacy" class="text-white">Privacidad</a></p>
-        </div>
-        <div class="col-md-6 text-end">
-          <ul class="list-inline">
-            <li class="list-inline-item"><a href="https://github.com/YanpieroCutipa/zefffood" class="text-white"><i class="fab fa-github"></i></a></li>
-            <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-facebook"></i></a></li>
-            <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-twitter"></i></a></li>
-            <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-instagram"></i></a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-      </footer>
-<style>
-html, body {
+    <style>
+      html, body {
   height: 100%;
   margin: 0;
 }
@@ -102,6 +86,12 @@ body {
 footer {
   background-color: #E8563F;
   padding: 20px 0;
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between; /* Distribute the content evenly across the footer */
+  align-items: center; /* Center the content vertically */
 }
 
 footer p {
@@ -112,24 +102,66 @@ footer p {
 footer a {
   color: #fff;
   font-size: 20px;
-}
-
-footer a:hover {
   text-decoration: none;
 }
 
-.list-inline {
-  padding-left: 0;
-  list-style: none;
+footer a:hover {
+  text-decoration: underline;
+}
+
+.nav-links,
+.social-icons {
   display: flex;
-  gap: 10px;
+  gap: 20px;
 }
 
-.list-inline-item {
-  font-size: 24px;
+.nav-links a,
+.social-icons a {
+  color: #fff;
+  font-size: 18px;
+  text-decoration: none;
 }
 
+.nav-links a:hover,
+.social-icons a:hover {
+  text-decoration: underline;
 }
+    
+    </style>
+
+
+    <div class="content">
+      <!-- Contenido principal de la página -->
+    </div>
+
+    <footer class="footer text-white">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <p>&copy; 2024 - Zeff_Food - <a href="/Home/Privacy" class="text-white">Privacidad</a></p>
+          </div>
+          <div class="col-md-6 text-end">
+            <ul class="list-inline">
+              <li class="list-inline-item"><a href="https://github.com/YanpieroCutipa/zefffood" class="text-white"><i class="fab fa-github"></i></a></li>
+              <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-facebook"></i></a></li>
+              <!--<li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-twitter"></i></a></li>-->
+              <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-instagram"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="nav-links">
+              <a href="/Home">Inicio</a>
+              <a href="/Nosotros">Nosotros</a>
+              <a href="/Contacto">Contáctame</a>
+              <a href="/Catalogo">Catálogo</a>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
 
 
 </style>

@@ -69,7 +69,7 @@ section:nth-child(even){
     font-size: 1.7rem;
     color:#fff;   
     align-items: center;
-    background-color: #20c9ac;
+    background-color: #E8563F;
     border-radius: .5rem;
     cursor: pointer;
     padding:.5rem 2rem;
@@ -688,7 +688,7 @@ header .icons #menu-bars{
     header .navbar{
         position: absolute;
         top:100%; left:0; right:0;
-        background:#20c9ac;
+        background: #E8563F;
         border-top: .1rem solid rgba(0,0,0,.2);
         border-bottom: .1rem solid rgba(0,0,0,.2);
         padding:1rem;

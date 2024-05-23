@@ -6,131 +6,141 @@
     IEnumerable<zefffood.Models.Proforma> listItemsCarrito = new List<Proforma>();
     listItemsCarrito = @Model.elementosCarrito;
     Decimal montoTotal = @Model.montoTotal;
-}
+}   
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewData["Title"] - Zeff_Food</title>
-    <link rel="stylesheet" href="~/css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>@ViewData["Title"] - Zeff_Food</title>
+  <link rel="stylesheet" href="~/css/styles.css">
 </head>
 <body>
-    <div class="wrapper">
-        <main class="content">
-            <div class="container">
-                <h1>@ViewData["Title"]</h1>
+  <div class="wrapper">
+    <main class="content">
+      <div class="container">
+        <h1>@ViewData["Title"]</h1>
 
-                <div class="cart-summary">
-                    <a class="btn btn-primary" asp-controller="Pago" 
-                        asp-action="Create" asp-route-monto="@montoTotal">Pagar</a>
-                    <p>Total: S/. @montoTotal</p>
-                </div>
+        
 
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Producto</th>
-                            <th>Cantidad</th>
-                            <th>Precio</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    @foreach (Proforma item in Model.elementosCarrito) {
-                        <tr>
-                            <td>@Html.DisplayFor(modelItem => item.Producto.Name)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Cantidad)</td>
-                            <td>S/. @Html.DisplayFor(modelItem => item.Precio)</td>
-                            <td>
-                                <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                                <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
-                            </td>
-                        </tr>
-                    }
-                    </tbody>
-                </table>
-            </div>
-        </main>
-       
-    </div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Cantidad</th>
+              <th>Precio</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach (Proforma item in Model.elementosCarrito) {
+              <tr>
+                <td>@Html.DisplayFor(modelItem => item.Producto.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Cantidad)</td>
+                <td>S/. @Html.DisplayFor(modelItem => item.Precio)</td>
+                <td>
+                  <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                  <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
 
+        <div class="cart-summary">
+          <p>Total: S/. @montoTotal</p>
+        </div>
+        <div class="cart-summary">
+          <a class="btn btn-primary" asp-controller="Pago" asp-action="Create" asp-route-monto="@montoTotal">Pagar</a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+</body>
+</html>
     <style>
-        html, body {
-    height: 100%;
-    margin: 0;
+     html, body {
+  height: 100%;
+  margin: 0;
 }
 
 body {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .wrapper {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Asegura que el contenedor envuelva toda la altura de la ventana */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Asegura que el contenedor envuelva toda la altura de la ventana */
 }
 
 .content {
-    flex: 1; /* Hace que el contenido principal ocupe todo el espacio disponible */
-    padding: 20px;
+  flex: 1; /* Hace que el contenido principal ocupe todo el espacio disponible */
+  padding: 20px;
 }
 
 footer {
-    background-color: #E8563F;
-    padding: 20px 0;
-    text-align: center;
+  background-color: #E8563F;
+  padding: 20px 0;
+  text-align: center;
 }
 
 footer p {
-    margin-bottom: 0;
-    font-size: 18px;
+  margin-bottom: 0;
+  font-size: 18px;
 }
 
 footer a {
-    color: #fff;
-    font-size: 20px;
+  color: #fff;
+  font-size: 20px;
 }
 
 footer a:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .list-inline {
-    padding-left: 0;
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
 .list-inline-item {
-    font-size: 24px;
+  font-size: 24px;
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
-    background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .btn-primary {
-    background-color: #E8563F;
-    border-color: #E8563F;
+  background-color: #E8563F;
+
+  
+  border-color: #E8563F;
 }
 
 .btn-primary:hover {
-    background-color: #c74533;
-    border-color: #c74533;
+  background-color: #c74533;
+  border-color: #c74533;
 }
 
 .cart-summary {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.cart-summary p {
+  margin-bottom: 0;
+  font-size: 20px;
+  font-weight: bold;
 }
 
     </style>
-</body>
-</html>
