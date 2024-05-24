@@ -6,8 +6,30 @@
     IEnumerable<zefffood.Models.Proforma> listItemsCarrito = new List<Proforma>();
     listItemsCarrito = @Model.elementosCarrito;
     Decimal montoTotal = @Model.montoTotal;
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    Decimal igv = (18*@montoTotal)/100, del = 3, res=(montoTotal-igv),mtF=(@montoTotal+del);
 }   
 
+<h1 class="titulo"><center>@ViewData["Title"]</center></h1>
+<style>
+    .titulo {
+        font-size: 50px;
+        font-family: Arial, sans-serif;
+        color: #E8563F;
+        font-weight: bold;
+    }
+     h1 {
+            font-size: 20px;
+            font-family: Arial, sans-serif;
+            color: #000000;
+        }
+      h2 {
+            font-size: 15px;
+            font-family: Arial, sans-serif;
+            color: #000000;
+        }
+  
+</style>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -20,25 +42,30 @@
   <div class="wrapper">
     <main class="content">
       <div class="container">
-        <h1>@ViewData["Title"]</h1>
-
-        
-
         <table class="table table-striped">
           <thead>
             <tr>
-              <th>Producto</th>
-              <th>Cantidad</th>
-              <th>Precio</th>
-              <th>Acciones</th>
+              <th><h1>Imagen</h1></th>
+              <th><h1>Producto</h1></th>
+              <th><h1>Cantidad</h1></th>
+              <th><h1>Precio</h1></th>
+              <th><h1>Acciones</h1></th>
             </tr>
           </thead>
           <tbody>
             @foreach (Proforma item in Model.elementosCarrito) {
               <tr>
-                <td>@Html.DisplayFor(modelItem => item.Producto.Name)</td>
-                <td>@Html.DisplayFor(modelItem => item.Cantidad)</td>
-                <td>S/. @Html.DisplayFor(modelItem => item.Precio)</td>
+                <td>
+                <div class="card-body">
+                  <div class="card-img-actions">
+                     <img class="img-responsive" width="100" height="100"src="@item.Producto.ImageURL" alt="@item.Producto.ImageURL"  />
+                  </div>
+                </div>
+            </td>
+                
+                <td><h2>@Html.DisplayFor(modelItem => item.Producto.Name)</h2></td>
+                <td><h2>@Html.DisplayFor(modelItem => item.Cantidad)</h2></td>
+                <td><h2>S/. @Html.DisplayFor(modelItem => item.Precio)</h2></td>
                 <td>
                   <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
                   <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
@@ -58,6 +85,23 @@
     </main>
   </div>
 
+    <center><div class="col-sm-4">
+        <div class="card" style="border-radius: 80px; height: 330px;">
+          <div class="card-body" style="margin: auto auto;">
+          <div class="card-img-actions">
+                <center><h1>Detalles:</h1>
+                <p><h1>Cargo por delivery : </h1> <h2>S/@del</h2></p>
+                <p><h1>IGV(18%): </h1> <h2>S/ @igv</h2</p>
+                <p><h1>Restante: </h1> <h2>S/ @res</h2></p>
+                <h1>Total S/. @mtF</h1>
+                <a class="btn btn-primary" asp-controller="Pago" asp-action="Create" asp-route-monto="@mtF"><img src="/Images/mastercard.png" class="img-fluid" alt="" width="30px" heigh="30px">Pagar</a>
+                <a class="btn btn-info" asp-controller="Catalogo" asp-action="Index" style=""><img src="/Images/carrito2.png" class="img-fluid" alt="" width="30px" heigh="30px">Seguir Comprando</a>
+            </center>
+            </div>
+          </div>
+        </div>
+    </div>
+    </center>
 </body>
 </html>
     <style>
