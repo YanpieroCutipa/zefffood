@@ -1,63 +1,85 @@
 @model zefffood.Models.Pago
 @{
-    ViewData["Title"] = "Pago";
+    ViewData["Title"] = "Realiza tu Pago";
 }
-<h1>@ViewData["Title"]</h1>
 
+<h1 class="titulo"><center>@ViewData["Title"]</center></h1>
+<style>
+    .titulo {
+        font-size: 50px;
+        font-family: Arial, sans-serif;
+        color: #E8563F;
+        font-weight: bold;
+    }
+     h1 {
+            font-size: 20px;
+            font-family: Arial, sans-serif;
+            color: #000000;
+        }
+  
+</style>
+  <form asp-controller="Carrito" asp-action="index">
+  <button type="submit" class="btn btn-primary">Atras</button>
+</form>
     <div class="container">
-
         <div class="row">
-          <div class="col-sm-10 mt-5">
+          <div class="col-sm-15 mt-5">
+          <div class="card" style="border-radius: 20px; padding: 1rem 1rem; height: 250px;">
            <form asp-controller="Pago" asp-action="Pagar">
               <div class="form-group row">
                 <input type="hidden" asp-for="UserID"/>
                 <div class="col-sm-2">
-                  <label asp-for="NombreTarjeta" class="control-label"></label>
+                  <h1><label class="control-label">Tarjeta</label></h1>
                 </div>
                 <div class="col-sm-2">
-                  <input asp-for="NombreTarjeta" class="form-control" />
-                </div>
+                 <select asp-for="NombreTarjeta" class="form-select">
+                            <option selected>Elige</option>
+                            <option value="1">BCP</option>
+                            <option value="2">BBVA</option>
+                            <option value="3">Scotiabank</option>
+                  </select>
               </div>
+                </div>
               <div class="form-group row">
                 <div class="col-sm-2">
-                  <label asp-for="NumeroTarjeta" class="control-label"></label>
+                 <h1><label class="control-label">Numero de Tarjeta</label></h1> 
                 </div>
                 <div class="col-sm-2">
-                  <input asp-for="NumeroTarjeta" class="form-control" data-inputmask="'mask': '9999-9999-9999-9999'" />
+                  <input asp-for="NumeroTarjeta" type="number" class="form-control" />
                 </div>
               </div>              
               <div class="form-group row">
                 <div class="col-sm-2">
-                  <label asp-for="DueDateYYMM" class="control-label"></label>
+                   <h1><label class="control-label">Fecha de Vencimiento</label></h1>
                 </div>
                 <div class="col-sm-2">
-                  <input asp-for="DueDateYYMM" class="form-control" data-inputmask="'mask': '99/99', 'placeholder': 'yy/mm'" />
-                </div>
-              </div>
-              <div class="form-group row">
-                <div class="col-sm-2">
-                  <label asp-for="Cvv" class="control-label"></label>
-                </div>
-                <div class="col-sm-2">
-                  <input asp-for="Cvv" class="form-control" data-inputmask="'mask': '999', 'placeholder': '999'" />
+                  <input asp-for="DueDateYYMM" type="month" class="form-control" />
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-sm-2">
-                  <label asp-for="MontoTotal" class="control-label"></label>
+                  <h1><label class="control-label">CVV</label></h1>
+                </div>
+                <div class="col-sm-2">
+                  <input asp-for="Cvv" type="number" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-2">
+                  <h1><label class="control-label">Monto Total</label></h1>
                 </div>
                 <div class="col-sm-2">
                   <input asp-for="MontoTotal" class="form-control" data-thousands="," data-decimal="." />
                 </div>
               </div>  
               <div class="form-group row">
-                <div class="col-sm-2"></div>
                 <div class="col-sm-2">
-                  <button type="submit" class="btn btn-primary">Pagar</button> 
+                  <button type="submit" class="btn btn-danger" onclick="pago();">Pagar</button> 
                 </div>
               </div>
+             
             </form>
-            <h1>@ViewData["Message"]</h1>
+            </div>
           </div>
         </div>
     </div>
