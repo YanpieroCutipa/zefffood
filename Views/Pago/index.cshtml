@@ -1,0 +1,48 @@
+@model IEnumerable<zefffood.Models.Pago>
+
+@{
+    ViewData["Title"] = "Registro de Pagos";
+    var count = 1;
+}
+<h1>@ViewData["Title"]</h1><br>
+<div class="d-grid gap-2">        
+    <a class="btn btn-success" asp-action="ExportarExcel">GENERAR REPORTE EXCEL</a>
+</div><br>&nbsp;
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">
+                №
+             </th>
+             <th scope="col">
+                Usuario
+             </th>
+             <th scope="col">
+                Fecha y Hora
+             </th>
+
+              <th scope="col">
+                Monto Total
+              </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+           <th scope="row">
+                @count
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentDate)
+            </td>                
+            <td>
+                S/. @Html.DisplayFor(modelItem => item.MontoTotal)
+            </td>
+        </tr>
+        count++;
+}
+    </tbody>
+</table>
