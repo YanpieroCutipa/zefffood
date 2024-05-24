@@ -1,12 +1,29 @@
 @model zefffood.Models.Proforma
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Editar";
 }
-
-<h1>Edit</h1>
-
-<h4>Proforma</h4>
+<h1 class="titulo"><center>@ViewData["Title"]</center></h1>
+<h1 class="titulo"><center>Proforma</center></h1>
+<style>
+    .titulo {
+        font-size: 50px;
+        font-family: Arial, sans-serif;
+        color: #E8563F;
+        font-weight: bold;
+    }
+     h1 {
+            font-size: 20px;
+            font-family: Arial, sans-serif;
+            color: #000000;
+        }
+      h2 {
+            font-size: 15px;
+            font-family: Arial, sans-serif;
+            color: #000000;
+        }
+  
+</style>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -15,20 +32,25 @@
             <input type="hidden" asp-for="Id" />
             <input type="hidden" asp-for="UserID" />
             <input type="hidden" asp-for="Precio" />
-            <div class="form-group">
-                <label asp-for="Cantidad" class="control-label"></label>
-                <input asp-for="Cantidad" class="form-control" />
-                <span asp-validation-for="Cantidad" class="text-danger"></span>
+           <div class="form-group">
+                <h1><label asp-for="Cantidad" class="control-label"></label></h1>
+                <h1><input asp-for="Cantidad" class="form-control" /></h1>
+                <h1><span asp-validation-for="Cantidad" class="text-danger"></span></h1>
+                <img src="/Images/comida.png" class="img-fluid" alt="" width="400px" heigh="400px">
+            </form>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            <center><div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
             </div>
-        </form>
+            </center>
+      
     </div>
 </div>
 
+
 <div>
-    <a asp-action="Index">Back to List</a>
+<h1 class="titulo"><center><a asp-action="Index"><img src="/Images/iconolista.png" class="img-fluid" alt="" width="50px" heigh="50px"></a></center>
+
 </div>
 
 @section Scripts {
