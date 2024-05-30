@@ -30,11 +30,22 @@
     .form-container input[type="checkbox"] {
         transform: scale(1.2);
     }
+    .title-box {
+        font-weight: bold;
+        border: 2px solid #363636;
+        padding: 10px;
+        border-radius: 5px;
+        text-align: center;
+        background-color: #fffdf0;
+        margin-bottom: 20px;
+    }
 </style>
 
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
     <div class="form-container">
-        <h3 class="text-center">@ViewData["Title"]</h3>
+        <div class="title-box">
+            <h3>@ViewData["Title"]</h3>
+        </div>
         <form id="formulario" method="post">
             <fieldset>
                 <div asp-validation-summary="All" class="text-danger"></div>
@@ -50,7 +61,7 @@
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
                 <div class="text-center mt-5">
-                    <button type="submit" class="btn btn-light" style="background-color:#020202; color:white;">Iniciar Sesión</button>
+                    <button type="submit" class="btn btn-light" style="background-color:#020202; color:white;">INICIAR SESIÓN</button>
                 </div>
                 <br>
                 <br>
