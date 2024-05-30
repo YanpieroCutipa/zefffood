@@ -1,52 +1,89 @@
 @model zefffood.Models.Contacto
+
 @{
-    ViewData["Title"] = "Contáctanos";
+    ViewData["Title"] = "CONTACTANOS";
 }
 
-@using (Html.BeginForm("EnviarMensaje", "Contacto", FormMethod.Post))
-{
-    <section>
-        <fieldset>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <h1 class="display-6 fw-bold text-center">@ViewData["Title"] <span>&#128222;</span></h1>
-                        <form asp-controller="Contacto" id="formulario"> 
-                            <div class="mb-3">
-                                <label asp-for="Name" class="form-label">Nombre:</label>
-                                <input asp-for="Name" class="form-control" type="text" placeholder="Ingrese su nombre" aria-label="Nombre" required/>
-                            </div>
+<style>
+    body {
+        background-image: url('https://img.freepik.com/fotos-premium/patron-fisuras-varios-articulos-comida-rapida-incluidas-hamburguesas-perritos-calientes-pizza-papas-fritas_14117-252410.jpg?w=1060');
+        background-size: cover;
+        background-position: center;
+    }
+    .form-container {
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+        max-width: 800px;
+        width: 100%;
+        font-size: 1.3rem;
+    }
+    .form-container h1 {
+        font-size: 2.2rem;
+    }
+    .form-container .form-control,
+    .form-container label,
+    .form-container button {
+        font-size: 1.2rem;
+    }
+    .form-container input[type="checkbox"] {
+        transform: scale(1.2);
+    }
+    .title-box {
+        font-weight: bold;
+        border: 2px solid #000;
+        padding: 10px;
+        border-radius: 5px;
+        text-align: center;
+        background-color: #fffdf0;
+        margin-bottom: 20px;
+    }
+</style>
 
-                            <div class="mb-3">
-                                <label asp-for="Email" class="form-label">Correo Electrónico:</label>
-                                <input asp-for="Email" class="form-control" placeholder="Ingrese su email" aria-label="Correo Electrónico" required/>
-                            </div>
-
-                            <div class="mb-3">
-                                <label asp-for="Category" class="form-label">Categoría:</label>
-                                <select asp-for="Category" class="form-select" aria-label="Categoría" required>
-                                    <option value="">Seleccione una categoría</option>
-                                    <option value="Consulta">Consulta</option>
-                                    <option value="Comentario">Comentario</option>
-                                    <option value="Sugerencia">Sugerencia</option>
-                                </select>
-                            </div>
-
-                            <div class="mb-3">
-                                <label asp-for="Message" class="form-label">Mensaje:</label>
-                                <textarea asp-for="Message" class="form-control" rows="4" placeholder="Ingrese su mensaje" aria-label="Mensaje" required></textarea>
-                            </div>
-
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary btn-lg">Enviar</button> 
-                            </div>
-                        </form>
-                        <div class="text-center mt-3">
-                            <h2>@ViewData["Message"]</h2>
-                        </div>
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="form-container">
+        <div class="title-box">
+            <h1 class="text-center">@ViewData["Title"] <span>&#128222;</span></h1>
+        </div>
+        @using (Html.BeginForm("EnviarMensaje", "Contacto", FormMethod.Post))
+        {
+            <section>
+                <fieldset>
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label">Nombre:</label>
+                        <input asp-for="Name" class="form-control" type="text" placeholder="Ingrese su nombre" aria-label="Nombre" required/>
                     </div>
-                </div>
-            </div>
-        </fieldset>
-    </section>
-}
+
+                    <div class="mb-3">
+                        <label asp-for="Email" class="form-label">Correo Electrónico:</label>
+                        <input asp-for="Email" class="form-control" placeholder="Ingrese su email" aria-label="Correo Electrónico" required/>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Category" class="form-label">Categoría:</label>
+                        <select asp-for="Category" class="form-select" aria-label="Categoría" required>
+                            <option value="">Seleccione una categoría</option>
+                            <option value="Consulta">Consulta</option>
+                            <option value="Comentario">Comentario</option>
+                            <option value="Sugerencia">Sugerencia</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Message" class="form-label">Mensaje:</label>
+                        <textarea asp-for="Message" class="form-control" rows="4" placeholder="Ingrese su mensaje" aria-label="Mensaje" required></textarea>
+                    </div>
+
+                    <div class="text-center mt-3">
+                        <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+                    </div>
+                </fieldset>
+            </section>
+        }
+        <div class="text-center mt-3">
+            <h2>@ViewData["Message"]</h2>
+        </div>
+    </div>
+</div>
+
