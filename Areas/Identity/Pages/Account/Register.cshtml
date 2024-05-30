@@ -1,72 +1,83 @@
 ﻿@page
 @model RegisterModel
+
 @{
-    ViewData["Title"] = "Registrar";
+    ViewData["Title"] = "REGISTRAR";
 }
-<h1 class="display-6 fw-bold text-center"></h1>
-    <div class="col-lg-6 mx-auto">
 
-<div class="row">
-    
+<style>
+    body {
+        background-image: url('https://img.freepik.com/fotos-premium/patron-fisuras-varios-articulos-comida-rapida-incluidas-hamburguesas-perritos-calientes-pizza-papas-fritas_14117-252410.jpg?w=1060');
+        background-size: cover;
+        background-position: center;
+    }
+    .form-container {
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+        max-width: 400px;
+        width: 100%;
+        font-size: 1.3rem;
+    }
+    .form-container h3 {
+        font-size: 1.8rem;
+    }
+    .form-container .form-control,
+    .form-container label,
+    .form-container button {
+        font-size: 1.2rem;
+    }
+    .form-container input[type="checkbox"] {
+        transform: scale(1.2);
+    }
+</style>
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="form-container">
+        <h3 class="text-center">@ViewData["Title"]</h3>
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-           <h3 class="text-center" >Crear una nueva cuenta</h3>
-           
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="col-12 mb-3">
-                <label class="form-label" asp-for="Input.Email">Correo Electrónico: </label>
-                <input asp-for="Input.Email" class="form-control tamaño" placeholder="Ingresa tu email"/>
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
-            </div>
-            <div class="col-12 mb-3">
-                <label class="form-label" asp-for="Input.Password">Contraseña: </label>
-                <input asp-for="Input.Password" class="form-control tamaño" id="password" placeholder="Ingresa tu contraseña"/>
-                <input type="checkbox" onclick="mostrar()" value="Mostrar Contraseña"> Mostrar contraseña 
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
-            </div>
-            <div class="col-12 mb-3">
-                <label class="form-label" asp-for="Input.ConfirmPassword">Confirmar Contraseña: </label>
-                <input asp-for="Input.ConfirmPassword" class="form-control tamaño" id="confirm" placeholder="Ingresa tu contraseña"/>
-                
-                <input type="checkbox" onclick="mostrar2()" value="Mostrar Contraseña"> Mostrar contraseña    
-                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-            </div>
-           
-           <div class="text-center mt-5">
- 
-            <button type="submit" class="btn btn-light" style="background-color:#020202; color:white;">Registrar</button>
-
-            </div>
-
+            <fieldset>
+                <h3 class="text-center">Crear una nueva cuenta</h3>
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group mb-3">
+                    <label asp-for="Input.Email" class="form-label">Correo Electrónico: </label>
+                    <input asp-for="Input.Email" class="form-control" placeholder="Ingresa tu email"/>
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="Input.Password" class="form-label">Contraseña: </label>
+                    <input asp-for="Input.Password" class="form-control" id="password" placeholder="Ingresa tu contraseña"/>
+                    <input type="checkbox" onclick="mostrar()"> Mostrar contraseña 
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="Input.ConfirmPassword" class="form-label">Confirmar Contraseña: </label>
+                    <input asp-for="Input.ConfirmPassword" class="form-control" id="confirm" placeholder="Ingresa tu contraseña"/>
+                    <input type="checkbox" onclick="mostrar2()"> Mostrar contraseña    
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
+                <div class="text-center mt-5">
+                    <button type="submit" class="btn btn-light" style="background-color:#020202; color:white;">Registrar</button>
+                </div>
             </fieldset>
-
         </form>
-       
+    </div>
 </div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
+
 <script type="text/javascript">
     function mostrar(){
-         var tipo = document.getElementById("password");
-
-         if(tipo.type == 'password'){
-            tipo.type = 'text';
-         }else{
-            tipo.type = 'password';
-         }
+        var tipo = document.getElementById("password");
+        tipo.type = tipo.type === 'password' ? 'text' : 'password';
     }
-
-    
 
     function mostrar2(){
-         var tip = document.getElementById("confirm");
-
-         if(tip.type == 'password'){
-            tip.type = 'text';
-         }else{
-            tip.type = 'password';
-         }
+        var tip = document.getElementById("confirm");
+        tip.type = tip.type === 'password' ? 'text' : 'password';
     }
-
 </script>
+
