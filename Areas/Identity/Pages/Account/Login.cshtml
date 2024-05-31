@@ -22,6 +22,9 @@
     }
     .form-container h3 {
         font-size: 3rem; /* Incrementar el tamaño de la fuente del título */
+        font-family: 'Courier New', Courier, monospace; /* Cambiar la fuente */
+        font-weight: bold;
+        text-align: center; /* Centrar el texto */
     }
     .form-container .form-control,
     .form-container label,
@@ -29,7 +32,15 @@
         font-size: 1.4rem; /* Incrementar el tamaño de la fuente de los elementos del formulario */
     }
     .form-container input[type="checkbox"] {
-        transform: scale(1.4); /* Incrementar el tamaño del checkbox */
+        transform: scale(1.2); /* Incrementar el tamaño del checkbox */
+    }
+    .form-container .checkbox-label {
+        display: flex;
+        align-items: center;
+        margin-top: 5px; /* Agregar margen superior para bajar el checkbox y el texto */
+    }
+    .form-container .checkbox-label input[type="checkbox"] {
+        margin-right: 5px; /* Agregar margen derecho al checkbox */
     }
     .title-box {
         font-weight: bold;
@@ -39,7 +50,7 @@
     .forgot-password-container {
         text-align: center;
         margin-top: 20px;
-        font-size: 1.2rem; /* Incrementar el tamaño de la fuente del enlace */
+        font-size: 1rem; /* Incrementar el tamaño de la fuente del enlace */
     }
     .circular-image {
         position: absolute;
@@ -64,12 +75,14 @@
             <fieldset>
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group mb-3">
-                    <input asp-for="Input.Email" class="form-control" placeholder="Email" />
+                    <input asp-for="Input.Email" class="form-control" placeholder="Correo Electrónico" />
                     <span asp-validation-for="Input.Email" class="text-danger"></span>
                 </div>
                 <div class="form-group mb-3">
                     <input asp-for="Input.Password" class="form-control" id="password" placeholder="Contraseña" />
-                    <input type="checkbox" onclick="mostrar()" value="Mostrar Contraseña"> Mostrar contraseña
+                    <div class="checkbox-label">
+                        <input type="checkbox" onclick="mostrar()"> <span>Mostrar contraseña</span>
+                    </div>
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
                 <div class="text-center mt-5">
@@ -101,4 +114,6 @@
         tipo.type = tipo.type === 'password' ? 'text' : 'password';
     }
 </script>
+
+
 
