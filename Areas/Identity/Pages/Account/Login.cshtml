@@ -2,7 +2,7 @@
 @model LoginModel
 
 @{
-    ViewData["Title"] = "INICIAR SESIÓN";
+    ViewData["Title"] = "INICIAR SESION";
 }
 
 <style>
@@ -13,36 +13,50 @@
     }
     .form-container {
         background-color: rgba(255, 255, 255, 0.9);
-        padding: 40px;
+        padding: 60px; /* Incrementar el padding para hacer el contenedor más alto */
         border-radius: 10px;
         box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
         max-width: 400px;
         width: 100%;
+        position: relative; /* Agregado para el posicionamiento absoluto de la imagen */
     }
     .form-container h3 {
-        font-size: 1.8rem;
+        font-size: 3rem; /* Incrementar el tamaño de la fuente del título */
     }
     .form-container .form-control,
     .form-container label,
     .form-container button {
-        font-size: 1.2rem;
+        font-size: 1.4rem; /* Incrementar el tamaño de la fuente de los elementos del formulario */
     }
     .form-container input[type="checkbox"] {
-        transform: scale(1.2);
+        transform: scale(1.4); /* Incrementar el tamaño del checkbox */
     }
     .title-box {
         font-weight: bold;
-        border: 2px solid #363636;
         padding: 10px;
-        border-radius: 5px;
         text-align: center;
-        background-color: #fffdf0;
-        margin-bottom: 20px;
+    }
+    .forgot-password-container {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 1.2rem; /* Incrementar el tamaño de la fuente del enlace */
+    }
+    .circular-image {
+        position: absolute;
+        top: -60px; /* Ajusta esta posición según sea necesario */
+        left: 50%;
+        transform: translateX(-50%);
+        width: 120px; /* Ajusta el tamaño según sea necesario */
+        height: 100px;
+        border-radius: 50%;
+        border: 5px solid white; /* Opcional: Añadir un borde blanco */
+        background-color: white; /* Fondo blanco para la imagen */
     }
 </style>
 
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
     <div class="form-container">
+        <img src="https://logowik.com/content/uploads/images/chef5524.logowik.com.webp" alt="Circular Image" class="circular-image" />
         <div class="title-box">
             <h3>@ViewData["Title"]</h3>
         </div>
@@ -50,34 +64,30 @@
             <fieldset>
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group mb-3">
-                    <label asp-for="Input.Email" class="form-label">Correo electrónico</label>
-                    <input asp-for="Input.Email" class="form-control" placeholder="Ingresa tu email" />
+                    <input asp-for="Input.Email" class="form-control" placeholder="Email" />
                     <span asp-validation-for="Input.Email" class="text-danger"></span>
                 </div>
                 <div class="form-group mb-3">
-                    <label asp-for="Input.Password" class="form-label">Contraseña</label>
-                    <input asp-for="Input.Password" class="form-control" id="password" placeholder="Ingresa tu contraseña" />
+                    <input asp-for="Input.Password" class="form-control" id="password" placeholder="Contraseña" />
                     <input type="checkbox" onclick="mostrar()" value="Mostrar Contraseña"> Mostrar contraseña
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
                 <div class="text-center mt-5">
-                    <button type="submit" class="btn btn-light" style="background-color:#020202; color:white;">INICIAR SESIÓN</button>
-                </div>
-                <br>
-                <br>
-                <div class="form-group">
-                    <p>
-                        <a id="forgot-password" asp-page="./ForgotPassword" style="color:black;">¿Olvidó su contraseña?</a>
-                    </p>
-                    <p>
-                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" style="color:black;">Registrarse como un nuevo usuario</a>
-                    </p>
-                    <p>
-                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation" style="color:black;">Reenviar correo de confirmación</a>
-                    </p>
+                    <button type="submit" class="btn btn-light" style="background-color:#020202; color:white;">INICIAR SESION</button>
                 </div>
             </fieldset>
         </form>
+        <div class="forgot-password-container">
+            <p>
+                <a id="forgot-password" asp-page="./ForgotPassword" style="color:black;">¿Olvidó su contraseña?</a>
+            </p>
+            @*<p>
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" style="color:black;">Registrarse como un nuevo usuario</a>
+                    </p>*@
+            @*<p>
+                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation" style="color:black;">Reenviar correo de confirmación</a>
+            </p>*@
+        </div>
     </div>
 </div>
 
@@ -91,3 +101,4 @@
         tipo.type = tipo.type === 'password' ? 'text' : 'password';
     }
 </script>
+
