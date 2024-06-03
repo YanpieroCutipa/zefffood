@@ -1,101 +1,102 @@
 @model IEnumerable<zefffood.Models.Producto>
 @{
     ViewData["Title"] = "CATALOGO";
-    ViewData["Content"] = "HAMBURGUESAS - HOT DOG - SANDWICH";
-    ViewData["Content2"] = "SALCHIPAPAS - PIZZAS - TACOS";
-    ViewData["Content3"] = "BEBIDAS";
 }
 
-<h1 class="titulo"><center>@ViewData["Title"]</center></h1>
 <style>
-       
-        .titulo {
-            font-size: 50px;
-            font-family: Arial, sans-serif;
-            font-weight: bold; 
-        }
-
-        h1 {
-            font-size: 20px;
-            font-family: Arial, sans-serif;
-            color: #E8563F;
-        }
-
-        h5 {
-            font-size: 30px;
-            font-family: Arial, sans-serif;
-            color: #050505;
-            font-weight: bold; 
-        }
-
-        p {
-            font-size: 20px;
-            font-family: Arial, sans-serif;
-            color: #050505;
-        }
-        .card-description {
-        padding: 20px; /* Ajusta el espacio alrededor del contenido */
-        background-color: #f8f9fa; /* Cambia el color de fondo del cuadro de descripción */
-        border-left: 1px solid #dee2e6; /* Agrega un borde a la izquierda del cuadro de descripción */
-        }
-
-        .card-description h5 {
-        font-size: 18px; /* Tamaño de fuente para el título */
-            color: #333; /* Color del texto */
-        }
-
-        .card-description p {
-        font-size: 16px; /* Tamaño de fuente para el texto */
-        color: #555; /* Color del texto */
-        margin-bottom: 10px; /* Ajusta el espacio entre párrafos */
-        }
-
-        card-description .btn {
-        margin-top: 10px; /* Ajusta el espacio entre los botones y el texto */
-        }
-
-
+    body {
+        background-image: url('https://previews.123rf.com/images/topform8/topform81307/topform8130700213/20674622-comida-r%C3%A1pida-de-fondo-sin-fisuras.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+    .form-container {
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 60px; /* Incrementar el padding para hacer el contenedor más alto */
+        border-radius: 10px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+        max-width: 800px; /* Incrementar el max-width para el contenedor del catálogo */
+        width: 100%;
+        position: relative; /* Agregado para el posicionamiento absoluto de la imagen */
+        margin: auto; /* Centrar el contenedor horizontalmente */
+    }
+    .form-container h3 {
+        font-size: 5rem; /* Incrementar el tamaño de la fuente del título */
+        font-family: 'Courier New', Courier, monospace; /* Cambiar la fuente */
+        font-weight: bold;
+        text-align: center; /* Centrar el texto */
+    }
+    .form-container .form-control,
+    .form-container label,
+    .form-container button {
+        font-size: 1.4rem; /* Incrementar el tamaño de la fuente de los elementos del formulario */
+    }
+    .form-container input[type="checkbox"] {
+        transform: scale(1.2); /* Incrementar el tamaño del checkbox */
+    }
+    .form-container .checkbox-label {
+        display: flex;
+        align-items: center;
+        margin-top: 5px; /* Agregar margen superior para bajar el checkbox y el texto */
+    }
+    .form-container .checkbox-label input[type="checkbox"] {
+        margin-right: 5px; /* Agregar margen derecho al checkbox */
+    }
+    .title-box {
+        font-weight: bold;
+        padding: 10px;
+        text-align: center;
+    }
+    .forgot-password-container {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 1rem; /* Incrementar el tamaño de la fuente del enlace */
+    }
     
-    </style>
-    <h1><center>@ViewData["Content"]</h1></center>
-    <h1><center>@ViewData["Content2"]</h1></center>
-    <h1><center>@ViewData["Content3"]</h1></center>
-<div class="container">
-    <div class="row mb-3">
-        <div class="col">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <form asp-controller="Catalogo" asp-action="Index" class="d-flex">
-                        <input type="text" name="searchString" class="form-control me-2" placeholder="Buscar productos">
-                        <button class="btn btn-outline-success" type="submit">Buscar</button>
-                    </form>
-                </li>
-            </ul>
+</style>
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="form-container">
+        <div class="title-box">
+            <h3>@ViewData["Title"]</h3>
         </div>
-    </div>
-    <h2>@ViewData["Message"]</h2>
-    <div class="row">
-        <div class="col">
-            <div id="products" class="mb-3">
-                <div class="row">
-                    @foreach (var item in Model)
-                    {
-                        <div class="col-sm-4">
-                            <div class="card mb-3">
-                                <div class="card-body">
-                                    <div class="card-img-actions">
-                                      <center><img src="@item.ImageURL" class="d-block w-100 image-fit"></center>
+        <div class="container">
+            <div class="row mb-3">
+                <div class="col">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <form asp-controller="Catalogo" asp-action="Index" class="d-flex">
+                                <input type="text" name="searchString" class="form-control me-2" placeholder="Buscar productos">
+                                <button class="btn btn-outline-success" type="submit">Buscar</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <h2>@ViewData["Message"]</h2>
+            <div class="row">
+                <div class="col">
+                    <div id="products" class="mb-3">
+                        <div class="row">
+                            @foreach (var item in Model)
+                            {
+                                <div class="col-sm-4">
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <div class="card-img-actions">
+                                                <center><img src="@item.ImageURL" class="d-block w-100 image-fit"></center>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <center><h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
+                                            <p class="card-text">@Html.DisplayFor(modelItem => item.Price)</p>
+                                            <a class="btn btn-primary" asp-controller="Carrito" asp-action="Add" asp-route-id="@item.Id">Añadir Carrito</a>
+                                            <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Ver Más</a></center>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="card-body">
-                                    <center><h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
-                                    <p class="card-text">@Html.DisplayFor(modelItem => item.Price)</p>
-                                    <a class="btn btn-primary" asp-controller="Carrito" asp-action="Add" asp-route-id="@item.Id">Añadir Carrito</a>
-                                    <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Ver Mas</a></center>
-                                </div>
-                            </div>
+                            }
                         </div>
-                    }
+                    </div>
                 </div>
             </div>
         </div>
