@@ -4,83 +4,98 @@
     ViewData["Title"] = "DETALLES DEL PRODUCTO";
 }
 
-<br /><br />
-
-<h1 class="titulo"><center>@ViewData["Title"]</center></h1>
-
 <style>
+    body {
+        background-image: url('https://previews.123rf.com/images/topform8/topform81307/topform8130700213/20674622-comida-r%C3%A1pida-de-fondo-sin-fisuras.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+
     .titulo {
         font-size: 50px;
-        font-family: Arial, sans-serif;
-        color: #E8563F;
+        font-family: 'Courier New', Courier, monospace;
         font-weight: bold;
+        text-align: center;
+        margin-bottom: 20px;
     }
 
     .card {
         border: 1px solid #dee2e6;
         border-radius: 15px;
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 20px;
         margin-bottom: 20px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        text-align: center; /* Alineación centrada para el contenido */
     }
 
     .card-img-actions {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        margin-bottom: 20px;
+        flex: 1;
+        padding-right: 20px;
+        text-align: center;
     }
 
     .card-img-actions img {
-        width: 400px;
-        height: 500px;
+        width: 100%;
+        height: auto;
         border-radius: 15px;
+        max-width: 400px;
     }
 
     .card-description {
-        position: absolute;
-        top: 50%;
-        right: -75%;
-        transform: translate(50%, -50%);
-        background-color: rgba(255, 255, 255, 0.8);
-        padding: 100px;
+        flex: 2;
+        padding: 20px;
         border-radius: 15px;
+        border: 1px solid #dee2e6;
+        background-color: rgba(255, 255, 255, 0.9);
     }
 
     .card-title {
         font-size: 24px;
+        font-family: Arial, sans-serif;
         color: #333;
         font-weight: bold;
         margin-bottom: 15px;
     }
 
     .card-text {
-        font-size: 22px; /* Cambia el tamaño de la fuente de la descripción */
+        font-size: 20px;
+        font-family: Arial, sans-serif;
         color: #555;
         margin-bottom: 20px;
     }
 
     .btn-primary {
         font-size: 18px;
+        padding: 1rem 1rem; /* Ajuste de relleno para que coincida con el otro botón */
+        margin-top: 5px; /* Ajuste de margen superior */
+        border-radius: 0.2rem; /* Ajuste de borde */
     }
 
+    .btn-container {
+        text-align: center; /* Alineación centrada para el botón */
+    }
 </style>
 
-<center>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="card-img-actions">
-                            <img class="img-responsive" src="@Html.DisplayFor(model => model.ImageURL)" />
-                            <div class="card-description">
-                                <h5 class="card-title">@Html.DisplayFor(model => model.Name)</h5>
-                                <p class="card-text">@Html.DisplayFor(model => model.Description)</p>
-                                <a class="btn btn-primary" asp-controller="Carrito" asp-action="Add" asp-route-id="@Model.Id">Añadir al Carrito</a>
-                            </div>
-                        </div>
-                    </div>
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div>
+        <div class="card">
+            <div class="card-img-actions">
+                <img class="img-responsive" src="@Model.ImageURL" />
+            </div>
+            <div class="card-description">  
+                <h1 class="titulo">@ViewData["Title"]</h1>
+                <h5 class="card-title">@Model.Name</h5>
+                <p class="card-text">@Model.Description</p>
+                <p class="card-text"><strong>Precio: @Model.Price</strong></p>
+                <div class="btn-container"> <!-- Contenedor adicional para el botón -->
+                    <a class="btn btn-primary btn-sm" asp-controller="Carrito" asp-action="Add" asp-route-id="@Model.Id">Agregar al carrito</a>
                 </div>
             </div>
         </div>
     </div>
-</center>
+</div>
