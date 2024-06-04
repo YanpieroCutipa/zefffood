@@ -2,189 +2,139 @@
 @using System.Collections.Generic;
 
 @{
-    ViewData["Title"] = "Carrito";
+    ViewData["Title"] = "CARRITO";
     IEnumerable<zefffood.Models.Proforma> listItemsCarrito = new List<Proforma>();
     listItemsCarrito = @Model.elementosCarrito;
     Decimal montoTotal = @Model.montoTotal;
     <script src="~/js/site.js" asp-append-version="true"></script>
-    Decimal igv = (18*@montoTotal)/100, del = 3, res=(montoTotal-igv),mtF=(@montoTotal+del);
-}   
+    Decimal igv = (18*@montoTotal)/100, del = 3, res=(montoTotal-igv), mtF=(@montoTotal+del);
+}
 
-<h1 class="titulo"><center>@ViewData["Title"]</center></h1>
 <style>
-    .titulo {
-        font-size: 50px;
-        font-family: Arial, sans-serif;
-        color: #E8563F;
+    body {
+        background-image: url('https://previews.123rf.com/images/topform8/topform81307/topform8130700213/20674622-comida-r%C3%A1pida-de-fondo-sin-fisuras.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+    .form-container {
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 60px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+        max-width: 800px;
+        width: 100%;
+        position: relative;
+        margin: auto;
+    }
+    .form-container h3 {
+        font-size: 3rem;
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: bold;
+        text-align: center;
+    }
+    .form-container .form-control,
+    .form-container label,
+    .form-container button {
+        font-size: 1.4rem;
+    }
+    .form-container input[type="checkbox"] {
+        transform: scale(1.2);
+    }
+    .form-container .checkbox-label {
+        display: flex;
+        align-items: center;
+        margin-top: 5px;
+    }
+    .form-container .checkbox-label input[type="checkbox"] {
+        margin-right: 5px;
+    }
+    .title-box {
+        font-weight: bold;
+        padding: 10px;
+        text-align: center;
+    }
+    .forgot-password-container {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 1rem;
+    }
+    .cart-summary {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        font-size: 1.4rem;
+        font-family: 'Courier New', Courier, monospace;
         font-weight: bold;
     }
-     h1 {
-            font-size: 20px;
-            font-family: Arial, sans-serif;
-            color: #000000;
-        }
-      h2 {
-            font-size: 15px;
-            font-family: Arial, sans-serif;
-            color: #000000;
-        }
-  
 </style>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>@ViewData["Title"] - Zeff_Food</title>
-  <link rel="stylesheet" href="~/css/styles.css">
-</head>
-<body>
-  <div class="wrapper">
-    <main class="content">
-      <div class="container">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th><h1>Imagen</h1></th>
-              <th><h1>Producto</h1></th>
-              <th><h1>Cantidad</h1></th>
-              <th><h1>Precio</h1></th>
-              <th><h1>Acciones</h1></th>
-            </tr>
-          </thead>
-          <tbody>
-            @foreach (Proforma item in Model.elementosCarrito) {
-              <tr>
-                <td>
-                <div class="card-body">
-                  <div class="card-img-actions">
-                     <img class="img-responsive" width="100" height="100"src="@item.Producto.ImageURL" alt="@item.Producto.ImageURL"  />
-                  </div>
-                </div>
-            </td>
-                
-                <td><h2>@Html.DisplayFor(modelItem => item.Producto.Name)</h2></td>
-                <td><h2>@Html.DisplayFor(modelItem => item.Cantidad)</h2></td>
-                <td><h2>S/. @Html.DisplayFor(modelItem => item.Precio)</h2></td>
-                <td>
-                  <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                  <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
-                </td>
-              </tr>
-            }
-          </tbody>
-        </table>
-
-        <div class="cart-summary">
-          <p>Total: S/. @montoTotal</p>
-        </div>
-        <div class="cart-summary">
-          <a class="btn btn-primary" asp-controller="Pago" asp-action="Create" asp-route-monto="@montoTotal">Pagar</a>
-        </div>
-      </div>
-    </main>
-  </div>
-
-    <center><div class="col-sm-4">
-        <div class="card" style="border-radius: 80px; height: 330px;">
-          <div class="card-body" style="margin: auto auto;">
-          <div class="card-img-actions">
-                <center><h1>Detalles:</h1>
-                <p><h1>Cargo por delivery : </h1> <h2>S/@del</h2></p>
-                <p><h1>IGV(18%): </h1> <h2>S/ @igv</h2</p>
-                <p><h1>Restante: </h1> <h2>S/ @res</h2></p>
-                <h1>Total S/. @mtF</h1>
-                <a class="btn btn-primary" asp-controller="Pago" asp-action="Create" asp-route-monto="@mtF"><img src="/Images/mastercard.png" class="img-fluid" alt="" width="30px" heigh="30px">Pagar</a>
-                <a class="btn btn-info" asp-controller="Catalogo" asp-action="Index" style=""><img src="/Images/carrito2.png" class="img-fluid" alt="" width="30px" heigh="30px">Seguir Comprando</a>
-            </center>
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh; background-color: rgba(255, 255, 255, 0.5);">
+    <div class="card" style="border-radius: 20px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); background-color: rgba(255, 255, 255, 1);">
+        <div class="form-container">
+            <div class="title-box">
+                <h3>@ViewData["Title"]</h3>
             </div>
-          </div>
+            <div class="container">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Imagen</th>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Precio</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Proforma item in Model.elementosCarrito) {
+                            <tr>
+                                <td>
+                                    <div class="card-img-actions">
+                                        <img src="@item.Producto.ImageURL" class="d-block w-50 image-fit">
+                                    </div>
+                                </td>
+                                <td>@Html.DisplayFor(modelItem => item.Producto.Name)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Cantidad)</td>
+                                <td>S/. @Html.DisplayFor(modelItem => item.Precio)</td>
+                                <td>
+                                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <div class="cart-summary">
+                    <p>Total: S/. @montoTotal</p>
+                </div>
+            </div>
+            <div class="cart-buttons d-flex justify-content-center mb-3"> <!-- Agregar margen inferior -->
+                <a class="btn btn-primary mr-2" asp-controller="Pago" asp-action="Create" asp-route-monto="@montoTotal">Pagar</a>
+                <a class="btn btn-info" asp-controller="Catalogo" asp-action="Index">Seguir Comprando</a>
+            </div>
+            <center>
+                <div class="col-lg-10">
+                    <div class="card" style="border-radius: 20px;">
+                        <div class="card-body" style="margin: auto auto;">
+                            <div class="card-img-actions">
+                                <center>
+                                    <h1>Detalles:</h1>
+                                    <p><h1>Cargo por delivery : </h1> <h2>S/@del</h2></p>
+                                    <p><h1>IGV(18%): </h1> <h2>S/ @igv</h2></p>
+                                    <p><h1>Restante: </h1> <h2>S/ @res</h2></p>
+                                    <h1>Total S/. @mtF</h1>
+                                    <a class="btn btn-primary" asp-controller="Pago" asp-action="Create" asp-route-monto="@mtF"><img src="/Images/mastercard.png" class="img-fluid" alt="" width="30px" height="30px"> Pagar</a>
+                                    <a class="btn btn-info" asp-controller="Catalogo" asp-action="Index" style=""><img src="/Images/carrito2.png" class="img-fluid" alt="" width="30px" height="30px"> Seguir Comprando</a>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </center>
         </div>
     </div>
-    </center>
-</body>
-</html>
-    <style>
-     html, body {
-  height: 100%;
-  margin: 0;
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
 }
-
-body {
-  display: flex;
-  flex-direction: column;
-}
-
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* Asegura que el contenedor envuelva toda la altura de la ventana */
-}
-
-.content {
-  flex: 1; /* Hace que el contenido principal ocupe todo el espacio disponible */
-  padding: 20px;
-}
-
-footer {
-  background-color: #E8563F;
-  padding: 20px 0;
-  text-align: center;
-}
-
-footer p {
-  margin-bottom: 0;
-  font-size: 18px;
-}
-
-footer a {
-  color: #fff;
-  font-size: 20px;
-}
-
-footer a:hover {
-  text-decoration: none;
-}
-
-.list-inline {
-  padding-left: 0;
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-.list-inline-item {
-  font-size: 24px;
-}
-
-.table-striped tbody tr:nth-of-type(odd) {
-  background-color: rgba(0, 0, 0, 0.05);
-}
-
-.btn-primary {
-  background-color: #E8563F;
-
-  
-  border-color: #E8563F;
-}
-
-.btn-primary:hover {
-  background-color: #c74533;
-  border-color: #c74533;
-}
-
-.cart-summary {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.cart-summary p {
-  margin-bottom: 0;
-  font-size: 20px;
-  font-weight: bold;
-}
-
-    </style>
