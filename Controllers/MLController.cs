@@ -30,18 +30,32 @@ namespace zefffood.Controllers
             return View();
         }
 
-        public IActionResult Predict(String sentimiento)
-        {
-            MLModel1.ModelInput modelInput = new MLModel1.ModelInput()
-            {
-                SentimentText = sentimiento
-            };
+       public IActionResult Predict(String sentimiento)
+{
+    MLModel1.ModelInput modelInput = new MLModel1.ModelInput()
+    {
+        SentimentText = sentimiento
+    };
 
-            MLModel1.ModelOutput prediction = _predictionEnginePool.Predict(modelInput);
-            ViewData["Sentimiento"] =  prediction.PredictedLabel;
-            ViewData["Score"] =  prediction.Score[1];
-            return View("Index");
-        }
+    MLModel1.ModelOutput prediction = _predictionEnginePool.Predict(modelInput);
+
+    // Determinar si el sentimiento es positivo o negativo basado en el score
+    string sentimientoPredicho;
+    if (prediction.Score[1] >= 0.5) // Umbral de 0.5 (ajustable según tus necesidades)
+    {
+        sentimientoPredicho = "Positivo";
+    }
+    else
+    {
+        sentimientoPredicho = "Negativo";
+    }
+
+    ViewData["Sentimiento"] = prediction.PredictedLabel;
+    ViewData["Score"] = prediction.Score[1];
+    ViewData["SentimientoPredicho"] = sentimientoPredicho;
+
+    return View("Index");
+}
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

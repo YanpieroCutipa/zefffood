@@ -20,6 +20,7 @@ namespace zefffood.Data.Migrations
                     Name = table.Column<string>(type: "text", nullable: true),
                     Email = table.Column<string>(type: "text", nullable: true),
                     Message = table.Column<string>(type: "text", nullable: true)
+                    
                 },
                 constraints: table =>
                 {
