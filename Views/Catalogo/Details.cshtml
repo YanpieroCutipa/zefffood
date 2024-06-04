@@ -11,11 +11,21 @@
         background-position: center;
     }
 
+    .main-container {
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+        max-width: 1000px;
+        width: 100%;
+        margin: auto;
+        text-align: center; /* Alineación centrada para el contenedor */
+    }
+
     .titulo {
         font-size: 50px;
         font-family: 'Courier New', Courier, monospace;
         font-weight: bold;
-        text-align: center;
         margin-bottom: 20px;
     }
 
@@ -81,14 +91,14 @@
     }
 </style>
 
-<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+<div class="main-container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
     <div>
+        <h1 class="titulo">@ViewData["Title"]</h1>
         <div class="card">
             <div class="card-img-actions">
                 <img class="img-responsive" src="@Model.ImageURL" />
             </div>
             <div class="card-description">  
-                <h1 class="titulo">@ViewData["Title"]</h1>
                 <h5 class="card-title">@Model.Name</h5>
                 <p class="card-text">@Model.Description</p>
                 <p class="card-text"><strong>Precio: @Model.Price</strong></p>
