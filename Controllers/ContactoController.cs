@@ -10,8 +10,6 @@ using zefffood.Data;
 using Microsoft.Extensions.ML;
 using SentimentAnalysis;
 
-
-
 namespace zefffood.Controllers
 {
     public class ContactoController : Controller
@@ -36,7 +34,7 @@ namespace zefffood.Controllers
         [HttpPost]
         public IActionResult EnviarMensaje(Contacto objcontato, string sentimiento)
         {
-            _logger.LogDebug("Ingreso a Enviar Mensaje");
+            _logger.LogDebug("Ingrese el Mensaje");
 
             // Se registran los datos del objeto en la base de datos
             _context.Add(objcontato);
@@ -62,10 +60,7 @@ namespace zefffood.Controllers
 
             return View("Index");
         }
-                
-
-
-
+                        
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
