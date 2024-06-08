@@ -32,24 +32,27 @@ namespace zefffood.Controllers
         }
 
         [HttpPost]
-        public IActionResult EnviarMensaje(Contacto objcontato, string sentimiento)
+       public IActionResult EnviarMensaje(Contacto objcontato)
         {
-            _logger.LogDebug("Ingrese el Mensaje");
-
-            // Se registran los datos del objeto en la base de datos
-            _context.Add(objcontato);
-            _context.SaveChanges();
+            _logger.LogDebug("Mensaje recibido");
 
             // Realizar predicción de sentimiento
             MLModel1.ModelInput modelInput = new MLModel1.ModelInput()
             {
-                SentimentText = sentimiento
+                SentimentText = objcontato.Message
             };
 
             MLModel1.ModelOutput prediction = _predictionEnginePool.Predict(modelInput);
 
             // Determinar si el sentimiento es positivo o negativo basado en el score
             string sentimientoPredicho = prediction.Score[1] >= 0.5 ? "Positivo" : "Negativo";
+
+            // Asignar el sentimiento predicho a la propiedad Text
+            objcontato.Text = sentimientoPredicho;
+
+            // Registrar los datos del objeto en la base de datos
+            _context.Add(objcontato);
+            _context.SaveChanges();
 
             ViewData["Message"] = "Se registró el contacto";
             ViewData["Sentimiento"] = prediction.PredictedLabel;
@@ -60,6 +63,7 @@ namespace zefffood.Controllers
 
             return View("Index");
         }
+
                         
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

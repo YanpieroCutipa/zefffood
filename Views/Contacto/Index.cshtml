@@ -12,34 +12,34 @@
     }
     .form-container {
         background-color: rgba(255, 255, 255, 0.9);
-        padding: 60px; /* Incrementar el padding para hacer el contenedor más alto */
+        padding: 60px;
         border-radius: 10px;
         box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
         max-width: 400px;
         width: 100%;
-        position: relative; /* Agregado para el posicionamiento absoluto de la imagen */
+        position: relative;
     }
     .form-container h3 {
-        font-size: 3rem; /* Incrementar el tamaño de la fuente del título */
-        font-family: 'Courier New', Courier, monospace; /* Cambiar la fuente */
+        font-size: 3rem;
+        font-family: 'Courier New', Courier, monospace;
         font-weight: bold;
-        text-align: center; /* Centrar el texto */
+        text-align: center;
     }
     .form-container .form-control,
     .form-container label,
     .form-container button {
-        font-size: 1.4rem; /* Incrementar el tamaño de la fuente de los elementos del formulario */
+        font-size: 1.4rem;
     }
     .form-container input[type="checkbox"] {
-        transform: scale(1.2); /* Incrementar el tamaño del checkbox */
+        transform: scale(1.2);
     }
     .form-container .checkbox-label {
         display: flex;
         align-items: center;
-        margin-top: 5px; /* Agregar margen superior para bajar el checkbox y el texto */
+        margin-top: 5px;
     }
     .form-container .checkbox-label input[type="checkbox"] {
-        margin-right: 5px; /* Agregar margen derecho al checkbox */
+        margin-right: 5px;
     }
     .title-box {
         font-weight: bold;
@@ -49,18 +49,18 @@
     .forgot-password-container {
         text-align: center;
         margin-top: 20px;
-        font-size: 1rem; /* Incrementar el tamaño de la fuente del enlace */
+        font-size: 1rem;
     }
     .circular-image {
         position: absolute;
-        top: -60px; /* Ajusta esta posición según sea necesario */
+        top: -60px;
         left: 50%;
         transform: translateX(-50%);
-        width: 120px; /* Ajusta el tamaño según sea necesario */
+        width: 120px;
         height: 100px;
         border-radius: 50%;
-        border: 5px solid white; /* Opcional: Añadir un borde blanco */
-        background-color: white; /* Fondo blanco para la imagen */
+        border: 5px solid white;
+        background-color: white;
     }
 </style>
 
@@ -76,12 +76,12 @@
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group mb-3">
                     <label asp-for="Name" class="form-label">Nombre:</label>
-                    <input asp-for="Name" class="form-control" type="text" placeholder="Ingrese su nombre" aria-label="Nombre" required/>
+                    <input asp-for="Name" class="form-control" type="text" placeholder="Ingrese su nombre" aria-label="Nombre" required />
                 </div>
 
                 <div class="form-group mb-3">
                     <label asp-for="Email" class="form-label">Correo Electrónico:</label>
-                    <input asp-for="Email" class="form-control" placeholder="Ingrese su email" aria-label="Correo Electrónico" required/>
+                    <input asp-for="Email" class="form-control" placeholder="Ingrese su email" aria-label="Correo Electrónico" required />
                 </div>
 
                 <div class="form-group mb-3">
@@ -95,9 +95,8 @@
                 </div>
 
                 <div class="form-group mb-3">
-                    <label for="sentimiento">Mensaje:</label>
-                     <input type="text" class="form-control" id="sentimiento" name="sentimiento" />   
-                    
+                    <label asp-for="Message" class="form-label">Mensaje:</label>
+                    <textarea asp-for="Message" class="form-control" placeholder="Escriba su mensaje aquí" aria-label="Mensaje" required></textarea>
                 </div>
 
                 <div class="text-center mt-3">
@@ -107,12 +106,11 @@
         }
         <div class="text-center mt-3">
             <h2>@ViewData["Message"]</h2>
-            @if (ViewData["Sentimiento"] != null)
-    {
-    <h2>Resultado de la Predicción</h2>
-    //<p>Sentimiento Predicho: @ViewData["Sentimiento"]</p>
-    //<p>Sentimiento Score: @ViewData["Score"]</p>
-    <p>Sentimiento: @ViewData["SentimientoPredicho"]</p>
-    }
-        
+            @if (ViewData["SentimientoPredicho"] != null)
+            {
+                <h2>Resultado de la Predicción</h2>
+                <p>Sentimiento: @ViewData["SentimientoPredicho"]</p>
+            }
+        </div>
+    </div>
 </div>
