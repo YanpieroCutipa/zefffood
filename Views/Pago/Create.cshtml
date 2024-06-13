@@ -3,83 +3,143 @@
     ViewData["Title"] = "Realiza tu Pago";
 }
 
-<h1 class="titulo"><center>@ViewData["Title"]</center></h1>
 <style>
-    .titulo {
-        font-size: 50px;
-        font-family: Arial, sans-serif;
-        color: #E8563F;
-        font-weight: bold;
+    body {
+        background-image: url('https://static.vecteezy.com/system/resources/previews/007/591/385/non_2x/hand-drawn-fast-food-decorative-background-vector.jpg');
+        background-size: cover;
+        background-position: center;
     }
-     h1 {
-            font-size: 20px;
-            font-family: Arial, sans-serif;
-            color: #000000;
-        }
-  
+    .form-container {
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 60px; /* Incrementar el padding para hacer el contenedor más alto */
+        border-radius: 10px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+        max-width: 700px;
+        width: 100%;
+        position: relative; /* Agregado para el posicionamiento absoluto de la imagen */
+    }
+    .form-container h3 {
+        font-size: 3rem; /* Incrementar el tamaño de la fuente del título */
+        font-family: 'Courier New', Courier, monospace; /* Cambiar la fuente */
+        font-weight: bold;
+        text-align: center; /* Centrar el texto */
+    }
+    .form-container .form-control,
+    .form-container label,
+    .form-container button {
+        font-size: 1.4rem; /* Incrementar el tamaño de la fuente de los elementos del formulario */
+    }
+    .form-container input[type="checkbox"] {
+        transform: scale(1.2); /* Incrementar el tamaño del checkbox */
+    }
+    .form-container .checkbox-label {
+        display: flex;
+        align-items: center;
+        margin-top: 5px; /* Agregar margen superior para bajar el checkbox y el texto */
+    }
+    .form-container .checkbox-label input[type="checkbox"] {
+        margin-right: 5px; /* Agregar margen derecho al checkbox */
+    }
+    .title-box {
+        font-weight: bold;
+        padding: 10px;
+        text-align: center;
+    }
+    .forgot-password-container {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 1rem; /* Incrementar el tamaño de la fuente del enlace */
+    }
+    .circular-image {
+        position: absolute;
+        top: -60px; /* Ajusta esta posición según sea necesario */
+        left: 50%;
+        transform: translateX(-50%);
+        width: 120px; /* Ajusta el tamaño según sea necesario */
+        height: 120px;
+        border-radius: 50%;
+        border: 5px solid white; /* Opcional: Añadir un borde blanco */
+        background-color: white; /* Fondo blanco para la imagen */
+    }
 </style>
-  <form asp-controller="Carrito" asp-action="index">
-  <button type="submit" class="btn btn-primary">Atras</button>
-</form>
-    <div class="container">
-        <div class="row">
-          <div class="col-sm-15 mt-5">
-          <div class="card" style="border-radius: 20px; padding: 1rem 1rem; height: 250px;">
-           <form asp-controller="Pago" asp-action="Pagar">
-              <div class="form-group row">
-                <input type="hidden" asp-for="UserID"/>
-                <div class="col-sm-2">
-                  <h1><label class="control-label">Tarjeta</label></h1>
-                </div>
-                <div class="col-sm-2">
-                 <select asp-for="NombreTarjeta" class="form-select">
-                            <option selected>Elige</option>
-                            <option value="1">BCP</option>
-                            <option value="2">BBVA</option>
-                            <option value="3">Scotiabank</option>
-                  </select>
-              </div>
-                </div>
-              <div class="form-group row">
-                <div class="col-sm-2">
-                 <h1><label class="control-label">Numero de Tarjeta</label></h1> 
-                </div>
-                <div class="col-sm-2">
-                  <input asp-for="NumeroTarjeta" type="number" class="form-control" />
-                </div>
-              </div>              
-              <div class="form-group row">
-                <div class="col-sm-2">
-                   <h1><label class="control-label">Fecha de Vencimiento</label></h1>
-                </div>
-                <div class="col-sm-2">
-                  <input asp-for="DueDateYYMM" type="month" class="form-control" />
-                </div>
-              </div>
-              <div class="form-group row">
-                <div class="col-sm-2">
-                  <h1><label class="control-label">CVV</label></h1>
-                </div>
-                <div class="col-sm-2">
-                  <input asp-for="Cvv" type="number" class="form-control" />
-                </div>
-              </div>
-              <div class="form-group row">
-                <div class="col-sm-2">
-                  <h1><label class="control-label">Monto Total</label></h1>
-                </div>
-                <div class="col-sm-2">
-                  <input asp-for="MontoTotal" class="form-control" data-thousands="," data-decimal="." />
-                </div>
-              </div>  
-              <div class="form-group row">
-                <div class="col-sm-2">
-                  <button type="submit" class="btn btn-danger" onclick="pago();">Pagar</button> 
-                </div>
-              </div>
-             
-            </form>
-            </div>
+
+ 
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="form-container">
+        <img src="https://cdn-icons-png.flaticon.com/512/4564/4564877.png" alt="Circular Image" class="circular-image" />
+        <div class="title-box">
+    <h1 class="text-center mb-4">Formulario Realiza tu Pago</h1>
+    <div class="row justify-content-center">
+    <img src="https://png.pngtree.com/png-clipart/20230812/original/pngtree-front-and-back-side-credit-card-vector-illustration-picture-image_7883995.png" />
+
+    
+           <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-8">
+      <form asp-controller="Pago" asp-action="Pagar">
+        <div class="form-group row">
+          <input type="hidden" asp-for="UserID"/>
+          <div class="col-sm-4">
+            <h1><label class="control-label">Tarjeta</label></h1>
+          </div>
+          <div class="col-sm-4">
+            <select asp-for="NombreTarjeta" class="form-select">
+              <option selected>Elige</option>
+              <option value="1">BCP</option>
+              <option value="2">BBVA</option>
+              <option value="3">Scotiabank</option>
+            </select>
           </div>
         </div>
+        <div class="form-group row">
+          <div class="col-sm-4">
+            <h1><label class="control-label">Numero de Tarjeta</label></h1> 
+          </div>
+          <div class="col-sm-4">
+            <input asp-for="NumeroTarjeta" type="number" class="form-control" />
+          </div>
+        </div>              
+        <div class="form-group row">
+          <div class="col-sm-4">
+            <h1><label class="control-label">Fecha de Vencimiento</label></h1>
+          </div>
+          <div class="col-sm-4">
+            <input asp-for="DueDateYYMM" type="month" class="form-control" />
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-4">
+            <h1><label class="control-label">CVV</label></h1>
+          </div>
+          <div class="col-sm-4">
+            <input asp-for="Cvv" type="number" class="form-control" />
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-4">
+            <h1><label class="control-label">Monto Total</label></h1>
+          </div>
+          <div class="col-sm-4">
+            <input asp-for="MontoTotal" class="form-control" data-thousands="," data-decimal="." />
+          </div>
+        </div>  
+        <div class="form-group row justify-content-center">
+          <div class="col-sm-4">
+            <button type="submit" class="btn btn-danger" onclick="pago();">Pagar</button> 
+          </div>
+        </div>
+      </form>
     </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6"> <!-- ajusta el tamaño del contenedor según tus necesidades -->
+      <form asp-controller="Carrito" asp-action="index" class="text-center">
+        <button type="submit" class="btn btn-primary">Atrás</button>
+      </form>
+    </div>
+  </div>
+</div>
