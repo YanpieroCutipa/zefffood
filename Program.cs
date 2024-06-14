@@ -25,11 +25,20 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
+
 builder.Services.AddPredictionEnginePool<MLModel1.ModelInput, MLModel1.ModelOutput>()
     .FromFile("MLModel1.mlnet");
+    builder.Services.AddHttpClient("ClimaService", client =>
+{
+    client.BaseAddress = new Uri("https://api.climate.example.com/");
+});
 builder.Services.AddEndpointsApiExplorer();
 
 //Registro mi logica customizada y reuzable
+builder.Services.AddScoped<IClimaService, ClimaService>();
+
+builder.Services.AddScoped<PagoService, PagoService>();
+
 builder.Services.AddScoped<ProductoService, ProductoService>();
 
 builder.Services.AddScoped<JsonplaceholderAPIIntegration, JsonplaceholderAPIIntegration>();
@@ -52,6 +61,7 @@ builder.Services.AddSwaggerGen(c =>
         Version = "v1",
         Description = "Descripción de la API"
     });
+
 });
 var app = builder.Build();
 
@@ -72,7 +82,9 @@ app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1");
+    
 });
+
 app.MapPost("/predict",
     async (PredictionEnginePool<MLModel1.ModelInput, MLModel1.ModelOutput> predictionEnginePool, MLModel1.ModelInput input) =>
         await Task.FromResult(predictionEnginePool.Predict(input)));

@@ -9,6 +9,7 @@ using zefffood.Models;
 using Microsoft.AspNetCore.Identity;
 using zefffood.Data;
 using Microsoft.EntityFrameworkCore;
+using zefffood.Service;
 
 namespace zefffood.Controllers
 {
@@ -17,12 +18,14 @@ namespace zefffood.Controllers
         private readonly ILogger<PagoController> _logger;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly ApplicationDbContext _context;
+         private readonly PagoService _pagoService;
 
-        public PagoController(ILogger<PagoController> logger, UserManager<IdentityUser> userManager, ApplicationDbContext context)
+        public PagoController(ILogger<PagoController> logger, UserManager<IdentityUser> userManager, ApplicationDbContext context, PagoService pagoService)
         {
             _logger = logger;
             _userManager = userManager;
             _context = context;
+             _pagoService = pagoService;
         }
 
         public IActionResult Create(Decimal monto)
@@ -83,5 +86,15 @@ namespace zefffood.Controllers
         {
             return View("Error!");
         }
+          public async Task<IActionResult> Index()
+        {
+
+            var pagos = await _pagoService.GetAll();
+            return pagos != null ?
+                        View(pagos) :
+                        Problem("Entity set 'ApplicationDbContext.DataPago'  is null.");
+        }
+
+
     }
 }
